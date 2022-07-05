@@ -1,0 +1,14 @@
+{
+  "name": "translate",
+  "version": "1.0.0",
+  "description": "CLI tool to translate between languages",
+  "main": "bin/index.ts",
+	"bin": {
+		"tran": "./bin/index.ts"
+	},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
