@@ -2,13 +2,20 @@
   "name": "translate",
   "version": "1.0.0",
   "description": "CLI tool to translate between languages",
-  "main": "bin/index.ts",
-	"bin": {
-		"tran": "./bin/index.ts"
-	},
+  "main": "bin/index.js",
+  "bin": {
+    "tran": "./bin/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "chalk": "^4.1.1",
+    "dotenv": "^16.0.1",
+    "google-translate-api": "^2.3.0",
+    "yargs": "^16.2.0"
+  }
 }
