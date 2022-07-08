@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 require("dotenv").config();
 const yargs = require("yargs");
-const { detectLanguage, translateLanguage } = require("./api.js");
+const { translateLanguage } = require("./api.js");
 
 const {
   parseSentence,
@@ -35,14 +35,6 @@ if (yargs.argv._[0]) {
     );
     console.log("Enter tran --help to get started.\n");
   } else {
-    // let sourceLanguage = "en";
-    // detectLanguage(sentence)
-    //   .then((response) => {
-    //     sourceLanguage = response.data.data.detections[0].language || "en";
-    //   })
-    //   .catch((err) => {
-    //     console.error(err);
-    //   });
     translateLanguage(sentence, language, "en")
       .then((response) => {
         console.log(
