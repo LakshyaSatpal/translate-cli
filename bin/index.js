@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 require("dotenv").config();
+const chalk = require("chalk");
+const boxen = require("boxen");
 const yargs = require("yargs");
 const { translateLanguage } = require("./api.js");
 
@@ -10,7 +12,9 @@ const {
   parseLanguage,
 } = require("./utils.js");
 
-const usage = "\nUsage: tran <lang_name> <sentence_to_be_translated>";
+const usage = chalk.hex("#83aaff")(
+  "\nUsage: tran <lang_name> <sentence_to_be_translated>"
+);
 const options = yargs
   .usage(usage)
   .option("l", {
@@ -31,18 +35,28 @@ if (yargs.argv._[0]) {
   const sentence = parseSentence(yargs.argv._.slice(1));
   if (sentence === "") {
     console.error(
-      "\nThe entered sentence is like John Cena, I can't see it!\n"
+      chalk.red("\nThe entered sentence is like John Cena, I can't see it!\n")
     );
     console.log("Enter tran --help to get started.\n");
   } else {
     translateLanguage(sentence, language, "en")
       .then((response) => {
         console.log(
-          "\n" + response.data.data.translations[0].translatedText + "\n"
+          "\n" +
+            boxen(
+              chalk.green(
+                "\n" + response.data.data.translations[0].translatedText + "\n"
+              ),
+              {
+                padding: 2,
+                borderColor: "green",
+                dimBorder: true,
+              }
+            )
         );
       })
       .catch((err) => {
-        console.error(err.response.data.error.message);
+        console.log(err);
       });
   }
 }
